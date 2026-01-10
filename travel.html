@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南台灣三日遊行程表</title>
+    <style>
+        :root {
+            --primary-blue: #0056b3;
+            --light-blue: #e3f2fd;
+            --accent-blue: #007bff;
+            --dark-blue: #003d80;
+            --text-color: #333;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", sans-serif;
+            background-color: var(--light-blue);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* 縣市選擇選單 */
+        .city-menu {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+        .city-card {
+            background: var(--white);
+            border: 2px solid var(--primary-blue);
+            border-radius: 12px;
+            padding: 20px;
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            color: var(--primary-blue);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .city-card:hover {
+            background-color: var(--primary-blue);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .city-card.active {
+            background-color: var(--dark-blue);
+            color: white;
+            border-color: var(--dark-blue);
+        }
+
+        /* 行程內容區塊 */
+        .itinerary-section {
+            display: none; /* 預設隱藏 */
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--light-blue);
+            padding-bottom: 10px;
+        }
+
+        .note {
+            background: #fff3cd;
+            border-left: 5px solid #ffecb5;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            border-radius: 4px;
+        }
+
+        /* 時間軸樣式 */
+        .timeline {
+            list-style: none;
+            padding: 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--accent-blue);
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .time {
+            font-weight: bold;
+            min-width: 100px;
+            color: var(--dark-blue);
+        }
+
+        .activity {
+            flex: 1;
+        }
+
+        .sub-info {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+            background: #f9f9f9;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        .highlight {
+            color: #d9534f;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>我的南台灣三日遊</h1>
+    <p>屏東 • 高雄 • 台南 藍色公路之旅</p>
+</header>
+
+<div class="container">
+    <div class="city-menu">
+        <div class="city-card" onclick="showDay('day1', this)">第一天：屏東</div>
+        <div class="city-card" onclick="showDay('day2', this)">第二天：高雄</div>
+        <div class="city-card" onclick="showDay('day3', this)">第三天：台南</div>
+    </div>
+
+    <div id="day1" class="itinerary-section">
+        <h2>Day 1：屏東 (海邊與溫泉)</h2>
+        <div class="note">
+            ⚠️ 備註：TR-PASS 不能搭乘自強3000，購買需在學證明。
+        </div>
+        <div class="timeline">
+            <div class="timeline-item"><div class="time">05:52</div><div class="activity">彰化搭火車出發</div></div>
+            <div class="timeline-item"><div class="time">09:06</div><div class="activity">抵達潮州火車站 → 租機車</div></div>
+            <div class="timeline-item"><div class="time">10:00</div><div class="activity">枋山遊憩區休息 (騎車約50分鐘)</div></div>
+            <div class="timeline-item"><div class="time">11:00</div><div class="activity">易之林海鮮餐廳 (午餐)</div></div>
+            <div class="timeline-item"><div class="time">12:20</div><div class="activity">國立海洋生物博物館 (海生館)</div></div>
+            <div class="timeline-item"><div class="time">16:00</div><div class="activity">
+                四重溪溫泉 (清泉湯屋) & 看水豚
+                <div class="sub-info">
+                    ♨️ 湯屋方案：日式湯屋($1000/90分) 或 露天($300/人)<br>
+                    🐹 水豚入園：$200 (可抵商品)
+                </div>
+            </div></div>
+            <div class="timeline-item"><div class="time">19:00</div><div class="activity">
+                晚餐：西門鴨香飯
+                <div class="sub-info">
+                    甜點：阿娥姐綠豆蒜、恆春紅豆餅<br>
+                    飲料：武厚茶
+                </div>
+            </div></div>
+            <div class="timeline-item"><div class="time">住宿</div><div class="activity">淺水藍民宿</div></div>
+            <div class="timeline-item"><div class="time">伴手禮</div><div class="activity">洋蔥田(洋蔥酥)、玉珍香(洋蔥蛋捲)</div></div>
+        </div>
+    </div>
+
+    <div id="day2" class="itinerary-section">
+        <h2>Day 2：高雄 (旗津港都風情)</h2>
+        <div class="timeline">
+            <div class="timeline-item"><div class="time">09:00</div><div class="activity">起床 & 早餐：賞味家早餐舖</div></div>
+            <div class="timeline-item"><div class="time">10:30</div><div class="activity">騎車回潮州還車</div></div>
+            <div class="timeline-item"><div class="time">11:24</div><div class="activity">搭火車前往高雄 (11:55抵達)</div></div>
+            <div class="timeline-item"><div class="time">12:30</div><div class="activity">
+                前往旗津
+                <div class="sub-info">
+                    捷運：紅線(美麗島) → 橘線(哈瑪星站)<br>
+                    渡輪：鼓山渡輪站 → 旗津輪渡站
+                </div>
+            </div></div>
+            <div class="timeline-item"><div class="time">13:30</div><div class="activity">
+                旗津環島 (租自行車)
+                <div class="sub-info">
+                    路線：旗津老街 → 高雄燈塔(海岸線咖啡) → 旗后砲台 → 星空隧道 → 彩虹教堂 → 貝殼館 → 風車公園
+                </div>
+            </div></div>
+            <div class="timeline-item"><div class="time">18:00</div><div class="activity">前往前金區 Check-in</div></div>
+            <div class="timeline-item"><div class="time">住宿</div><div class="activity">旅居文旅高雄七賢館</div></div>
+            <div class="timeline-item"><div class="time">宵夜</div><div class="activity">六合夜市、老江紅茶牛奶、奶油仙子</div></div>
+        </div>
+    </div>
+
+    <div id="day3" class="itinerary-section">
+        <h2>Day 3：台南 (美食與開運)</h2>
+        <div class="timeline">
+            <div class="timeline-item"><div class="time">07:28</div><div class="activity">抵達台南 → 後站租機車 (上好)</div></div>
+            <div class="timeline-item"><div class="time">08:00</div><div class="activity">鍾天貴手相 (南門路53號)</div></div>
+            <div class="timeline-item"><div class="time">08:20</div><div class="activity">早餐：美琴虱目魚粥</div></div>
+            <div class="timeline-item"><div class="time">09:20</div><div class="activity">台南開運修眉</div></div>
+            <div class="timeline-item"><div class="time">10:00</div><div class="activity">無名羊肉湯 (備案：包成羊肉)</div></div>
+            <div class="timeline-item"><div class="time">11:15</div><div class="activity">
+                市中心巡禮
+                <div class="sub-info">
+                    必買：阿美古早味蛋糕(麻糬)、葡吉麵包<br>
+                    飲料：青山茶行<br>
+                    午餐：國華街 (多多芙、鴨米鴨米、可口蔥油餅)
+                </div>
+            </div></div>
+            <div class="timeline-item"><div class="time">下午</div><div class="activity">梵藝術私人美術館 (備案：安平老街/台灣文學館)</div></div>
+            <div class="timeline-item"><div class="time">17:00</div><div class="activity">花園夜市</div></div>
+            <div class="timeline-item"><div class="time">18:55</div><div class="activity">搭火車回彰化 (完美結束！)</div></div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    © 2026 旅遊行程計畫 - 藍色風格網頁
+</footer>
+
+<script>
+    function showDay(dayId, element) {
+        // 隱藏所有行程
+        const sections = document.querySelectorAll('.itinerary-section');
+        sections.forEach(section => section.style.display = 'none');
+
+        // 移除所有按鈕的 active 狀態
+        const cards = document.querySelectorAll('.city-card');
+        cards.forEach(card => card.classList.remove('active'));
+
+        // 顯示點選的行程
+        document.getElementById(dayId).style.display = 'block';
+        
+        // 加入 active 狀態
+        element.classList.add('active');
+
+        // 自動滾動到內容區
+        window.scrollTo({
+            top: element.offsetTop - 20,
+            behavior: 'smooth'
+        });
+    }
+</script>
+
+</body>
+</html>
