@@ -10,13 +10,14 @@
             --light-blue: #e3f2fd;
             --accent-blue: #007bff;
             --dark-blue: #003d80;
+            --bg-color: #f0f7ff;
             --text-color: #333;
             --white: #ffffff;
         }
 
         body {
             font-family: "Microsoft JhengHei", sans-serif;
-            background-color: var(--light-blue);
+            background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
             padding: 0;
@@ -27,244 +28,322 @@
             background-color: var(--primary-blue);
             color: white;
             text-align: center;
-            padding: 2rem 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 2.5rem 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 20px auto;
             padding: 0 15px;
         }
 
-        /* 縣市選擇選單 */
-        .city-menu {
+        /* 縣市選擇按鈕 */
+        .city-selector {
             display: flex;
             justify-content: space-around;
             margin-bottom: 30px;
-            gap: 10px;
+            gap: 15px;
         }
 
-        .city-card {
+        .city-btn {
             background: var(--white);
             border: 2px solid var(--primary-blue);
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 50px;
+            padding: 15px 30px;
             flex: 1;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: bold;
+            font-size: 1.2rem;
             color: var(--primary-blue);
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
-        .city-card:hover {
-            background-color: var(--primary-blue);
-            color: white;
-            transform: translateY(-5px);
+        .city-btn:hover {
+            background-color: var(--light-blue);
+            transform: translateY(-3px);
         }
 
-        .city-card.active {
-            background-color: var(--dark-blue);
+        .city-btn.active {
+            background-color: var(--primary-blue);
             color: white;
-            border-color: var(--dark-blue);
         }
 
         /* 行程內容區塊 */
         .itinerary-section {
             display: none; /* 預設隱藏 */
             background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-            animation: fadeIn 0.5s ease;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 0.6s ease;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         h2 {
-            color: var(--primary-blue);
-            border-bottom: 2px solid var(--light-blue);
+            color: var(--dark-blue);
+            border-bottom: 3px solid var(--light-blue);
             padding-bottom: 10px;
+            margin-top: 0;
         }
 
-        .note {
-            background: #fff3cd;
-            border-left: 5px solid #ffecb5;
-            padding: 10px;
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-            border-radius: 4px;
+        .special-note {
+            background: #fff9db;
+            border-left: 5px solid #fab005;
+            padding: 15px;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            border-radius: 8px;
         }
 
-        /* 時間軸樣式 */
+        /* 時間軸列表 */
         .timeline {
             list-style: none;
             padding: 0;
-        }
-
-        .timeline-item {
-            display: flex;
-            margin-bottom: 15px;
-            border-left: 3px solid var(--accent-blue);
-            padding-left: 15px;
             position: relative;
         }
 
+        .item {
+            display: flex;
+            margin-bottom: 20px;
+            position: relative;
+            align-items: flex-start; /* 讓內容對齊頂部 */
+        }
+
         .time {
-            font-weight: bold;
             min-width: 100px;
-            color: var(--dark-blue);
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
         }
 
-        .activity {
+        .content {
             flex: 1;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--light-blue);
         }
 
-        .sub-info {
+        .transport {
+            display: inline-block;
+            background-color: var(--light-blue);
+            color: var(--dark-blue);
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+
+        .sub-details {
             font-size: 0.9rem;
             color: #666;
-            margin-top: 5px;
-            background: #f9f9f9;
-            padding: 8px;
-            border-radius: 5px;
+            margin-top: 8px;
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
         }
 
-        .highlight {
-            color: #d9534f;
+        .highlight-text {
+            color: #d9480f;
             font-weight: bold;
+        }
+        
+        /* 地圖連結按鈕樣式 */
+        .map-link {
+            display: inline-block;
+            margin-left: 8px;
+            padding: 2px 8px;
+            font-size: 0.85rem;
+            color: var(--white);
+            background-color: var(--accent-blue);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .map-link:hover {
+            background-color: var(--dark-blue);
         }
 
         footer {
             text-align: center;
-            padding: 40px;
-            color: #888;
-            font-size: 0.8rem;
+            padding: 50px 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* 手機板優化 */
+        @media (max-width: 600px) {
+            .city-selector {
+                flex-direction: column;
+            }
+            .time {
+                min-width: 70px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>我的南台灣三日遊</h1>
-    <p>屏東 • 高雄 • 台南 藍色公路之旅</p>
+    <h1>南台灣三日遊 行程表</h1>
+    <p>屏東 • 高雄 • 台南 快樂之旅</p>
 </header>
 
 <div class="container">
-    <div class="city-menu">
-        <div class="city-card" onclick="showDay('day1', this)">第一天：屏東</div>
-        <div class="city-card" onclick="showDay('day2', this)">第二天：高雄</div>
-        <div class="city-card" onclick="showDay('day3', this)">第三天：台南</div>
+    <div class="city-selector">
+        <div class="city-btn" onclick="showDay('day1', this)">第一天：屏東</div>
+        <div class="city-btn" onclick="showDay('day2', this)">第二天：高雄</div>
+        <div class="city-btn" onclick="showDay('day3', this)">第三天：台南</div>
     </div>
 
     <div id="day1" class="itinerary-section">
         <h2>Day 1：屏東 (海邊與溫泉)</h2>
-        <div class="note">
-            ⚠️ 備註：TR-PASS 不能搭乘自強3000，購買需在學證明。
+        <div class="special-note">
+            💡 <b>備註：</b>會搭那麼早是因為買 TR-PASS 不能搭自強 3000，購買 TR-PASS 需要在學證明。
         </div>
         <div class="timeline">
-            <div class="timeline-item"><div class="time">05:52</div><div class="activity">彰化搭火車出發</div></div>
-            <div class="timeline-item"><div class="time">09:06</div><div class="activity">抵達潮州火車站 → 租機車</div></div>
-            <div class="timeline-item"><div class="time">10:00</div><div class="activity">枋山遊憩區休息 (騎車約50分鐘)</div></div>
-            <div class="timeline-item"><div class="time">11:00</div><div class="activity">易之林海鮮餐廳 (午餐)</div></div>
-            <div class="timeline-item"><div class="time">12:20</div><div class="activity">國立海洋生物博物館 (海生館)</div></div>
-            <div class="timeline-item"><div class="time">16:00</div><div class="activity">
-                四重溪溫泉 (清泉湯屋) & 看水豚
-                <div class="sub-info">
-                    ♨️ 湯屋方案：日式湯屋($1000/90分) 或 露天($300/人)<br>
-                    🐹 水豚入園：$200 (可抵商品)
+            <div class="item"><div class="time">05:52</div><div class="content">彰化搭火車出發</div></div>
+            <div class="item"><div class="time">09:06</div><div class="content">抵達潮州火車站 → <b>租機車</b></div></div>
+            <div class="item"><div class="time">~ 10:00</div><div class="content"><span class="transport">🛵 騎車 (50分鐘)</span> → 休息 (枋山遊憩區) <a href="https://maps.app.goo.gl/VoBJ2pyy6qvZU6wD6" target="_blank" class="map-link">📍 地圖</a></div></div>
+            <div class="item"><div class="time">~ 10:50</div><div class="content"><span class="transport">🛵 騎車 (40分鐘)</span> → 抵達餐廳</div></div>
+            <div class="item"><div class="time">11:00</div><div class="content">11:00 – 12:00 易之林海鮮餐廳 (午餐) <a href="https://maps.app.goo.gl/xwn7V15ssb5yaQwT8" target="_blank" class="map-link">📍 地圖</a></div></div>
+            <div class="item"><div class="time">~ 12:20</div><div class="content"><span class="transport">🛵 騎車 (15分鐘)</span> → 國立海洋生物博物館</div></div>
+            <div class="item"><div class="time">12:20</div><div class="content">12:20 – 15:30 國立海洋生物博物館 <a href="https://maps.app.goo.gl/RNrgkJGcs2uoxUkVA" target="_blank" class="map-link">📍 地圖</a></div></div>
+            <div class="item"><div class="time">~ 16:00</div><div class="content"><span class="transport">🛵 騎車 (15分鐘)</span> → 四重溪溫泉</div></div>
+            <div class="item"><div class="time">16:00</div><div class="activity">
+                16:00 – 18:30 四重溪溫泉 (清泉湯屋) <a href="https://maps.app.goo.gl/UWog6QsNJVfsdmCE6" target="_blank" class="map-link">📍 地圖</a>
+                <div class="sub-details">
+                    ♨️ <b>湯屋方案選擇：</b><br>
+                    1. 日式湯屋 $1,600 平日/90分鐘(四人使用)<br>
+                    2. 露天：300元/人 (需自備泳裝、泳帽、大浴巾)<br><br>
+                    🐹 <b>再看水豚：</b>入園門票 $200 (可抵用園區商品)
                 </div>
             </div></div>
-            <div class="timeline-item"><div class="time">19:00</div><div class="activity">
-                晚餐：西門鴨香飯
-                <div class="sub-info">
-                    甜點：阿娥姐綠豆蒜、恆春紅豆餅<br>
-                    飲料：武厚茶
+            <div class="item"><div class="time">19:00</div><div class="content">
+                吃晚餐
+                <div class="sub-details">
+                    🍽️ 晚餐：西門鴨香飯 <a href="https://maps.app.goo.gl/iuXebATQiLFB4hxP6" target="_blank" class="map-link">📍 地圖</a><br><br>
+                    🍮 甜點：阿娥姐綠豆蒜 <a href="https://maps.app.goo.gl/uBVujd3nDZoqS7P49" target="_blank" class="map-link">📍 地圖</a><br><br>
+                    🥤 飲料：武厚茶 <a href="https://maps.app.goo.gl/qZyk14m9CsofJMtX7" target="_blank" class="map-link">📍 地圖</a>
                 </div>
             </div></div>
-            <div class="timeline-item"><div class="time">住宿</div><div class="activity">淺水藍民宿</div></div>
-            <div class="timeline-item"><div class="time">伴手禮</div><div class="activity">洋蔥田(洋蔥酥)、玉珍香(洋蔥蛋捲)</div></div>
+            <div class="item"><div class="time">住宿</div><div class="content">淺水藍民宿 <a href="https://maps.app.goo.gl/ezie8bRWVfoHQBCm8" target="_blank" class="map-link">📍 地圖</a></div></div>
+            <div class="item"><div class="time">伴手禮</div><div class="content">洋蔥田手工伴手禮 <a href="https://maps.app.goo.gl/JCZBFZaPBNvE2sfP6" target="_blank" class="map-link">📍</a>、玉珍香餅店 <a href="https://maps.app.goo.gl/n9dguNLeTS4UVcEL8" target="_blank" class="map-link">📍</a>、鼎豐糕餅行 <a href="https://maps.app.goo.gl/voqVvbtZuv36LEMU6" target="_blank" class="map-link">📍</a></div></div>
         </div>
     </div>
 
     <div id="day2" class="itinerary-section">
-        <h2>Day 2：高雄 (旗津港都風情)</h2>
+        <h2>Day 2：高雄 (旗津港都)</h2>
         <div class="timeline">
-            <div class="timeline-item"><div class="time">09:00</div><div class="activity">起床 & 早餐：賞味家早餐舖</div></div>
-            <div class="timeline-item"><div class="time">10:30</div><div class="activity">騎車回潮州還車</div></div>
-            <div class="timeline-item"><div class="time">11:24</div><div class="activity">搭火車前往高雄 (11:55抵達)</div></div>
-            <div class="timeline-item"><div class="time">12:30</div><div class="activity">
+            <div class="item"><div class="time">09:00</div><div class="content">出門吃早餐：賞味家早餐舖 <a href="https://maps.app.goo.gl/4ihC97Dq9HnKEJt79" target="_blank" class="map-link">📍 地圖</a></div></div>
+            <div class="item"><div class="time">~ 10:30</div><div class="content"><span class="transport">🛵 騎車 (1.5小時)</span> → 潮州還機車</div></div>
+            <div class="item"><div class="time">11:24</div><div class="content">搭火車到高雄 (11:55抵達)</div></div>
+            <div class="item"><div class="time">中午</div><div class="content">
                 前往旗津
-                <div class="sub-info">
-                    捷運：紅線(美麗島) → 橘線(哈瑪星站)<br>
-                    渡輪：鼓山渡輪站 → 旗津輪渡站
+                <div class="sub-details">
+                    🚇 搭紅線(往小港) → 美麗島站換橘線 → 哈瑪星站<br><br>
+                    🚢 走路到「鼓山渡輪站」<a href="https://maps.app.goo.gl/apARcRArgvsWVhMS7" target="_blank" class="map-link">📍</a> 搭船至「旗津輪渡站」<a href="https://maps.app.goo.gl/TdcuBYNc3UyuKTMy7" target="_blank" class="map-link">📍</a><br><br>
+                    🚲 <b>租自行車</b>
                 </div>
             </div></div>
-            <div class="timeline-item"><div class="time">13:30</div><div class="activity">
-                旗津環島 (租自行車)
-                <div class="sub-info">
-                    路線：旗津老街 → 高雄燈塔(海岸線咖啡) → 旗后砲台 → 星空隧道 → 彩虹教堂 → 貝殼館 → 風車公園
+            <div class="item"><div class="time">下午</div><div class="content">
+                吃午餐 & 旗津逛逛
+                <div class="sub-details">
+                    🍴 美食：黑輪伯、雞排、雞肉串 <a href="https://maps.app.goo.gl/N891s1cHyr9ZioPg6" target="_blank" class="map-link">📍</a>、旗津手工汽水 <a href="https://maps.app.goo.gl/tq1UtE9YCMoD7wqv8" target="_blank" class="map-link">📍</a>、QQ妹｜地瓜碰、白糖粿 <a href="https://maps.app.goo.gl/612rEGSK21qrM1AT9" target="_blank" class="map-link">📍</a><br>、月桂烤小卷 <a href="https://maps.app.goo.gl/M4taCDRoa7Zx19oM8" target="_blank" class="map-link">📍</a>、海味-海鮮鍋燒海鮮粥 <a href="https://maps.app.goo.gl/BXM2Sqn6JeKaH34a6" target="_blank" class="map-link">📍</a><br><br>
+                    ☕ 咖啡廳：津樓 Liquid Building Coffee <a href="https://maps.app.goo.gl/VjS6YkZs9CCqxKSM8" target="_blank" class="map-link">📍</a><br><br>
+                    👛 伴手禮：錦純手工地瓜酥 <a href="https://maps.app.goo.gl/6BFwVxqHCAAizeDB9" target="_blank" class="map-link">📍</a><br><br>
+                    🚩 路線：老街 → 燈塔＆砲台 → 星空隧道 → 海水浴場 → 彩虹教堂 → 貝殼館 → 海珍珠 → 風車公園 → 觀光市場
                 </div>
             </div></div>
-            <div class="timeline-item"><div class="time">18:00</div><div class="activity">前往前金區 Check-in</div></div>
-            <div class="timeline-item"><div class="time">住宿</div><div class="activity">旅居文旅高雄七賢館</div></div>
-            <div class="timeline-item"><div class="time">宵夜</div><div class="activity">六合夜市、老江紅茶牛奶、奶油仙子</div></div>
+            <div class="item"><div class="time">晚上</div><div class="content">
+                回高雄
+                <div class="sub-details">
+                    🚢 走路到「旗津輪渡站」<a href="https://maps.app.goo.gl/TdcuBYNc3UyuKTMy7" target="_blank" class="map-link">📍</a> 搭船至「鼓山渡輪站」<a href="https://maps.app.goo.gl/apARcRArgvsWVhMS7" target="_blank" class="map-link">📍</a> 走路到「哈瑪星站」<a href="https://maps.app.goo.gl/RH7k8FChaQfecerL6" target="_blank" class="map-link">📍</a><br><br>
+                    備案：逛駁二<br><br>
+                    🚇 搭橘線(往大寮) → 前金站(下車)<br>
+                </div>
+            </div></div>
+            <div class="item"><div class="time">住宿</div><div class="content">旅居文旅高雄七賢館 <a href="https://maps.app.goo.gl/RsNydjmQKyWJw2S2A" target="_blank" class="map-link">📍 地圖</a></div></div>
+            <div class="item"><div class="time">宵夜</div><div class="content">六合觀光夜市 <a href="https://maps.app.goo.gl/UAynFPecEfjMeByP7" target="_blank" class="map-link">📍</a>、老江紅茶牛奶 <a href="https://maps.app.goo.gl/C6F1NLJckUg5GDor9" target="_blank" class="map-link">📍</a>、奶油仙子的深夜甜點劇場 <a href="https://maps.app.goo.gl/7EZtbcRPrKysHE4h7" target="_blank" class="map-link">📍</a></div></div>
         </div>
     </div>
 
     <div id="day3" class="itinerary-section">
         <h2>Day 3：台南 (美食與開運)</h2>
         <div class="timeline">
-            <div class="timeline-item"><div class="time">07:28</div><div class="activity">抵達台南 → 後站租機車 (上好)</div></div>
-            <div class="timeline-item"><div class="time">08:00</div><div class="activity">鍾天貴手相 (南門路53號)</div></div>
-            <div class="timeline-item"><div class="time">08:20</div><div class="activity">早餐：美琴虱目魚粥</div></div>
-            <div class="timeline-item"><div class="time">09:20</div><div class="activity">台南開運修眉</div></div>
-            <div class="timeline-item"><div class="time">10:00</div><div class="activity">無名羊肉湯 (備案：包成羊肉)</div></div>
-            <div class="timeline-item"><div class="time">11:15</div><div class="activity">
-                市中心巡禮
-                <div class="sub-info">
-                    必買：阿美古早味蛋糕(麻糬)、葡吉麵包<br>
-                    飲料：青山茶行<br>
-                    午餐：國華街 (多多芙、鴨米鴨米、可口蔥油餅)
+            <div class="item"><div class="time">6:10</div><div class="content">
+                出門搭捷運
+                <div class="sub-details">
+                    🚶‍♀️ 走路到「前金站」<a href="https://maps.app.goo.gl/6MmA4AAMLacUTMzS6" target="_blank" class="map-link">📍</a> → 美麗島站換紅線 → 高雄站<br>
                 </div>
             </div></div>
-            <div class="timeline-item"><div class="time">下午</div><div class="activity">梵藝術私人美術館 (備案：安平老街/台灣文學館)</div></div>
-            <div class="timeline-item"><div class="time">17:00</div><div class="activity">花園夜市</div></div>
-            <div class="timeline-item"><div class="time">18:55</div><div class="activity">搭火車回彰化 (完美結束！)</div></div>
+            <div class="item"><div class="time">06:53</div><div class="content">搭火車到台南 </div></div>
+            <div class="item"><div class="time">07:28</div><div class="content">抵達台南 → <b>租機車 (上好) <a href="https://maps.app.goo.gl/sRoqaazLveDgVqaD7" target="_blank" class="map-link">📍 地圖</a></b></div></div>
+            <div class="item"><div class="time">08:00</div><div class="content">鍾天貴手相 (南門路53號) <a href="https://maps.app.goo.gl/UvPixnNcUVMhpCqp8" target="_blank" class="map-link">📍 地圖</a></div></div>
+            <div class="item"><div class="time">08:20</div><div class="content"><span class="transport">🛵 騎機車 (15分鐘)</span> → 吃早餐 (美琴虱目魚粥) <a href="https://maps.app.goo.gl/RLDnGDhUR614XQv27" target="_blank" class="map-link">📍 地圖</a></div></div>
+            <div class="item"><div class="time">09:20</div><div class="content"><span class="transport">🛵 騎車 (20分鐘)</span> → 台南開運修眉(當天出門先看臉書) <a href="https://maps.app.goo.gl/JAa5JCTwK4hF97nK8" target="_blank" class="map-link">📍 地圖</a></div></div>
+            <div class="item"><div class="time">10:00</div><div class="content">
+                無名羊肉湯-大菜市場 <a href="https://maps.app.goo.gl/b9fxY4zMPJvRhCQw9" target="_blank" class="map-link">📍</a> (備案：包成羊肉)<br>
+            </div></div>
+            <div class="item"><div class="time">伴手禮</div><div class="content">阿美現烤古早味蛋糕 (買麻糬) <a href="https://maps.app.goo.gl/6ahE2BjStqcWgVbcA" target="_blank" class="map-link">📍</a>、熱富蝦餅 <a href="https://maps.app.goo.gl/cNQBSRYyTRapvRcL6" target="_blank" class="map-link">📍</a></div></div>
+            <div class="item"><div class="time">11:15</div><div class="content">11:15 手相 <a href="https://maps.app.goo.gl/UvPixnNcUVMhpCqp8" target="_blank" class="map-link">📍 地圖</a></div></div>
+            <div class="item"><div class="time">下午</div><div class="content">
+                台南市區慢遊
+                <div class="sub-details">
+                    🍹 飲料：青山茶行 <a href="https://maps.app.goo.gl/URzCdSrxipyfaYtYA" target="_blank" class="map-link">📍</a><br><br>
+                    🍱 午餐：國華街 <a href="https://maps.app.goo.gl/tV1F7WYuEmKXWYGC9" target="_blank" class="map-link">📍</a> (多多芙泡芙、鴨米鴨米薯條、可口蔥油餅)<br><br>
+                    🖼️ 梵藝術私人美術館 <a href="https://maps.app.goo.gl/eHtTjbFxjdd8h7B86" target="_blank" class="map-link">📍</a>、葡吉麵包店 <a href="https://maps.app.goo.gl/8Hh4fxVti9kKGFY27" target="_blank" class="map-link">📍</a><br><br>
+                    📸 備選：安平老街 <a href="https://maps.app.goo.gl/UPJhKZnUUtrPgBjb8" target="_blank" class="map-link">📍</a>、拍貼機<br>
+                </div>
+            </div></div>
+            <div class="item"><div class="time">17:00</div><div class="content">花園夜市 <a href="https://maps.app.goo.gl/WTDnWHh5ZWrcS5kt9" target="_blank" class="map-link">📍 地圖</a></div></div>
+            <div class="item"><div class="time">18:55</div><div class="content">還機車搭火車回彰化 <a href="https://maps.app.goo.gl/sRoqaazLveDgVqaD7" target="_blank" class="map-link">📍 地圖</a></div></div>
+            <div class="item"><div class="time">備案</div><div class="sub-details">
+                粼粼、Bula冷奶油咖椰吐司、夢鄉、文學館、咖啡廳(日波、䖙)、LEH
+            </div></div>
         </div>
     </div>
 </div>
 
 <footer>
-    © 2026 旅遊行程計畫 - 藍色風格網頁
+    © 2024 南台灣三日遊行程
 </footer>
 
 <script>
     function showDay(dayId, element) {
-        // 隱藏所有行程
+        // 隱藏所有行程區塊
         const sections = document.querySelectorAll('.itinerary-section');
         sections.forEach(section => section.style.display = 'none');
 
-        // 移除所有按鈕的 active 狀態
-        const cards = document.querySelectorAll('.city-card');
-        cards.forEach(card => card.classList.remove('active'));
+        // 移除所有按鈕的 active 樣式
+        const buttons = document.querySelectorAll('.city-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
 
-        // 顯示點選的行程
+        // 顯示被點選的區塊
         document.getElementById(dayId).style.display = 'block';
         
-        // 加入 active 狀態
+        // 將該按鈕標示為 active
         element.classList.add('active');
 
-        // 自動滾動到內容區
+        // 自動捲動到內容頂端 (手機版友善)
         window.scrollTo({
             top: element.offsetTop - 20,
             behavior: 'smooth'
         });
     }
+
+    // 預設顯示第一天
+    window.onload = function() {
+        document.querySelector('.city-btn').click();
+    };
 </script>
 
 </body>
